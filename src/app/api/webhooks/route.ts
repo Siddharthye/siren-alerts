@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { isDeliverableUrl, publicSubscription } from '@/domain/webhook'
-import { fail, ok, parseBody } from '@/lib/http'
+import { ok, parseBody } from '@/lib/http'
 import { listWebhooks, registerWebhook } from '@/lib/webhook-service'
 
 export const dynamic = 'force-dynamic'
