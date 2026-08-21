@@ -11,6 +11,7 @@ import type { Alert, Channel, Coordinates, EscalationStep, Geofence, Severity, S
 import { store } from '@/store'
 import { config } from './config'
 import { seedSubscribers } from './seed'
+import { dispatchWebhooks } from './webhook-service'
 
 const ALERTS = 'alerts'
 const SUBSCRIBERS = 'subscribers'
@@ -64,11 +65,13 @@ async function applyPendingEscalations(alerts: Alert[], now: Date): Promise<Aler
         firedEscalationSteps: [...alert.firedEscalationSteps, ...dueSteps],
       }
 
-      await store.appendEvent('alert.escalated', {
+      const escalation = {
         alertId: alert.id,
         steps: dueSteps,
         channels: escalated.channels,
-      })
+      }
+      void dispatchWebhooks('alert.escalated', escalation)
+      await store.appendEvent('alert.escalated', escalation)
 
       return escalated
     }),
@@ -135,6 +138,7 @@ export async function createAlert(input: CreateAlertInput): Promise<CreateAlertR
   }
 
   await store.writeCollection(ALERTS, [...alerts, alert])
+  void dispatchWebhooks('alert.created', alert)
   await store.appendEvent('alert.created', alert)
 
   return { outcome: 'created', alert, targeted: targets.length }
@@ -150,6 +154,7 @@ export async function acknowledgeAlert(alertId: string, subscriberId: string): P
 
   const updated: Alert = { ...target, acknowledgedBy: [...target.acknowledgedBy, subscriberId] }
   await store.writeCollection(ALERTS, alerts.map((alert) => (alert.id === alertId ? updated : alert)))
+  void dispatchWebhooks('alert.acknowledged', { alertId, subscriberId })
   await store.appendEvent('alert.acknowledged', { alertId, subscriberId })
 
   return updated
