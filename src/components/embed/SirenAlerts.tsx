@@ -33,10 +33,10 @@ interface SirenAlertsProps {
 }
 
 const SEVERITY_COLOR: Record<EmbeddedAlert['severity'], string> = {
-  P0: '#ef4444',
-  P1: '#f97316',
-  P2: '#eab308',
-  P3: '#38bdf8',
+  P0: '#ff453a',
+  P1: '#ff9f0a',
+  P2: '#ffd60a',
+  P3: '#a78bfa',
 }
 
 export function SirenAlerts({
@@ -85,8 +85,8 @@ export function SirenAlerts({
             padding: '10px 12px',
             borderRadius: 10,
             border: `1px solid ${SEVERITY_COLOR[alert.severity]}55`,
-            background: '#121826',
-            color: '#e5e7eb',
+            background: '#14131d',
+            color: '#ededf4',
           }}
         >
           <span
@@ -105,7 +105,7 @@ export function SirenAlerts({
           </span>
           <div style={{ minWidth: 0, flex: 1 }}>
             <p style={{ margin: 0, fontSize: 13, fontWeight: 600 }}>{alert.title}</p>
-            <p style={{ margin: '4px 0 0', fontSize: 12, color: '#8b95a7', lineHeight: 1.5 }}>
+            <p style={{ margin: '4px 0 0', fontSize: 12, color: '#9b98ad', lineHeight: 1.5 }}>
               {alert.message}
             </p>
           </div>
@@ -116,9 +116,9 @@ export function SirenAlerts({
               flexShrink: 0,
               fontSize: 11,
               fontWeight: 600,
-              color: '#38bdf8',
-              background: '#38bdf81a',
-              border: '1px solid #38bdf866',
+              color: '#a78bfa',
+              background: '#a78bfa1a',
+              border: '1px solid #a78bfa66',
               borderRadius: 6,
               padding: '4px 10px',
               cursor: 'pointer',

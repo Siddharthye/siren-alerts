@@ -1,27 +1,29 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-ops-bg: #0a0e17;
-  --color-ops-deep: #05070d;
-  --color-ops-panel: #121826;
-  --color-ops-lift: #182034;
-  --color-ops-border: #1f2937;
-  --color-ops-text: #e5e7eb;
-  --color-ops-muted: #8b95a7;
-  --color-ops-faint: #5b647a;
-  --color-ops-accent: #38bdf8;
+  --color-ops-bg: #0d0c13;
+  --color-ops-deep: #08070c;
+  --color-ops-panel: #14131d;
+  --color-ops-lift: #1c1a29;
+  --color-ops-border: #272437;
+  --color-ops-text: #ededf4;
+  --color-ops-muted: #9b98ad;
+  --color-ops-faint: #6a677e;
+  --color-ops-accent: #a78bfa;
 
-  --color-sev-p0: #ef4444;
-  --color-sev-p1: #f97316;
-  --color-sev-p2: #eab308;
-  --color-sev-p3: #38bdf8;
+  --color-sev-p0: #ff453a;
+  --color-sev-p1: #ff9f0a;
+  --color-sev-p2: #ffd60a;
+  --color-sev-p3: #a78bfa;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, 'Cascadia Code', monospace;
 }
 
 html,
 body {
   background: var(--color-ops-bg);
   color: var(--color-ops-text);
-  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family: var(--font-sans);
 }
 
 /* Pulse used to draw the eye to a newly arrived P0 alert. */

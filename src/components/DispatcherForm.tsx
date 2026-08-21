@@ -111,7 +111,7 @@ export function DispatcherForm({ campusCentre }: DispatcherFormProps) {
             step={50}
             value={radiusM}
             onChange={(event) => setRadiusM(Number(event.target.value))}
-            className="mt-1 w-full accent-sky-400"
+            className="mt-1 w-full accent-[#a78bfa]"
           />
         </label>
 
@@ -120,7 +120,7 @@ export function DispatcherForm({ campusCentre }: DispatcherFormProps) {
             type="checkbox"
             checked={escalate}
             onChange={(event) => setEscalate(event.target.checked)}
-            className="accent-sky-400"
+            className="accent-[#a78bfa]"
           />
           Escalate to SMS after 20s if unacknowledged
         </label>
